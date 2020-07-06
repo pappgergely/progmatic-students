@@ -1,0 +1,27 @@
+<app-header></app-header>
+<div class="container">
+  <!-- Table -->
+  <table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+      <th scope="col">Név</th>
+      <th scope="col">E-mail cím</th>
+      <th scope="col">Életkor</th>
+      <th scope="col">Nem</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let u of users">
+      <td>{{ u.name }}</td>
+      <td>{{ u.email }}</td>
+      <td>{{ u.age }}</td>
+      <td>{{ u.gender }}</td>
+      <td>
+        <button type="button" class="btn btn-warning btn-sm update-button">Módosít</button>
+        <button type="button" class="btn btn-danger btn-sm delete-button">Töröl</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
