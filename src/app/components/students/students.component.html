@@ -1,4 +1,5 @@
-<app-header></app-header>
+<app-header titleText="Hallgatói nyilvántartás" buttonText="Hozzáadás"
+            buttonLink="/add-user" [buttonClass]="'btn-success'"></app-header>
 <div class="container">
   <!-- Table -->
   <table class="table table-bordered table-striped">
@@ -16,7 +17,7 @@
       <td>{{ u.name }}</td>
       <td>{{ u.email }}</td>
       <td>{{ u.age }}</td>
-      <td>{{ u.gender }}</td>
+      <td>{{ u.gender | gender }}</td>
       <td>
         <button type="button" class="btn btn-warning btn-sm update-button">Módosít</button>
         <button type="button" class="btn btn-danger btn-sm delete-button">Töröl</button>

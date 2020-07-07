@@ -16,6 +16,10 @@ export class StudentsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loadUsers();
+  }
+
+  loadUsers(): void {
     this.userService.getUsers().subscribe(users => {
       this.users = users;
     });

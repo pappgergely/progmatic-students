@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row mt-5 mb-2 ml-1">
-    <h1>Hallgatói nyilvántartás</h1>
+    <h1>{{ titleText }}</h1>
     <div class="col">
       <div class="float-right">
-        <button type="button" class="btn btn-success my-2 my-sm-0 add-button" data-toggle="modal" data-target="#formModal">Hozzáadás</button>
+        <button type="button" class="btn my-2 my-sm-0" [ngClass]="buttonClass" [routerLink]="buttonLink">{{ buttonText }}</button>
       </div>
     </div>
   </div>
