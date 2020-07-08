@@ -26,6 +26,13 @@ export class UserService {
     return this.http.post(environment.apiEndpoint, {student: user}, { withCredentials: true });
   }
 
+  deleteUser(userId: number): Observable<User[]> {
+    return this.http.delete<UsersResponse>(
+      `${environment.apiEndpoint}?id=${userId}`,
+      { withCredentials: true }
+    ).pipe(map( uResp => uResp.students ));
+  }
+
   checkCapital(control: AbstractControl): ValidationErrors | null {
     if (control.value && control.value.charAt(0)
       && control.value.charAt(0).toUpperCase() === control.value.charAt(0)) {

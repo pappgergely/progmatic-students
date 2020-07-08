@@ -20,7 +20,7 @@
       <td>{{ u.gender | gender }}</td>
       <td>
         <button type="button" class="btn btn-warning btn-sm update-button">Módosít</button>
-        <button type="button" class="btn btn-danger btn-sm delete-button">Töröl</button>
+        <button type="button" class="btn btn-danger btn-sm delete-button" (click)="deleteUser(u)">Töröl</button>
       </td>
     </tr>
     </tbody>

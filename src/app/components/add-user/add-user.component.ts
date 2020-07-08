@@ -32,6 +32,13 @@ export class AddUserComponent {
     this.userService.addUser(u).subscribe((response) => {
       if (response.success) {
         this.router.navigate(['/students']);
+      } else {
+        if (response['error-infos'].includes('not-valid-email')) {
+          this.addForm.get('email').setErrors({ email: true });
+        }
+        if (response['error-infos'].includes('not-valid-age')) {
+          this.addForm.get('age').setErrors({ required: true });
+        }
       }
     });
   }

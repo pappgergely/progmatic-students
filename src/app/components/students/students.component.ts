@@ -25,4 +25,9 @@ export class StudentsComponent implements OnInit {
     });
   }
 
+  deleteUser(user: User): void {
+    this.userService.deleteUser(user.id).subscribe(users => {
+      this.users = users;
+    });
+  }
 }
