@@ -2,39 +2,5 @@
             buttonText="Vissza" buttonLink="/students" buttonClass="btn-secondary"></app-header>
 
 <div class="container">
-  <form [formGroup]="addForm" (submit)="addUser()">
-    <div class="form-group">
-      <label for="add-user-name">Név</label>
-      <input type="text" class="form-control" id="add-user-name" formControlName="name"
-             [ngClass]="{ 'is-invalid' : addForm.get('name').invalid && addForm.get('name').touched }">
-      <div class="invalid-feedback" *ngIf="addForm.get('name').errors?.required">A mező kitöltése kötelező!</div>
-      <div class="invalid-feedback" *ngIf="addForm.get('name').errors?.capital">A nevedet nagybetűvel kezdd!</div>
-      <div class="invalid-feedback" *ngIf="addForm.get('name').errors?.maxlength">
-        Max {{ addForm.get('name').errors.maxlength.requiredLength }} karaktert írhatsz be!
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="add-user-email">E-mail cím</label>
-      <input type="email" class="form-control" id="add-user-email" formControlName="email"
-             [ngClass]="{ 'is-invalid' : addForm.get('email').invalid && addForm.get('email').touched }">
-      <div class="invalid-feedback" *ngIf="addForm.get('email').errors?.required">A mező kitöltése kötelező!</div>
-      <div class="invalid-feedback" *ngIf="addForm.get('email').errors?.email">Az e-mail cím nem valós!</div>
-    </div>
-    <div class="form-group">
-      <label for="add-user-age">Életkor</label>
-      <input type="number" class="form-control" id="add-user-age" formControlName="age"
-             [ngClass]="{ 'is-invalid' : addForm.get('age').invalid && addForm.get('age').touched }">
-      <div class="invalid-feedback" *ngIf="addForm.get('age').errors?.required">A mező kitöltése kötelező!</div>
-      <div class="invalid-feedback" *ngIf="addForm.get('age').errors?.min">Túl fiatal vagy!</div>
-    </div>
-    <div class="form-group">
-      <label for="add-user-gender">Nem</label>
-      <select class="form-control" id="add-user-gender" formControlName="gender"
-              [ngClass]="{ 'is-invalid' : addForm.get('gender').invalid && addForm.get('gender').touched }">
-        <option value="FEMALE">Nő</option>
-        <option value="MALE">Férfi</option>
-      </select>
-    </div>
-    <button type="submit" class="btn btn-primary" [disabled]="addForm.invalid">Mentés</button>
-  </form>
+  <app-user-form (submitUser)="addUser($event)"></app-user-form>
 </div>
