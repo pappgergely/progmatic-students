@@ -33,6 +33,14 @@ export class UserService {
     ).pipe(map( uResp => uResp.students ));
   }
 
+  putUser(user: User): Observable<User[]> {
+    return this.http.put<UsersResponse>(
+      `${environment.apiEndpoint}?id=${user.id}`,
+      { student: user },
+      { withCredentials: true }
+      ).pipe(map( uResp => uResp.students ));
+  }
+
   checkCapital(control: AbstractControl): ValidationErrors | null {
     if (control.value && control.value.charAt(0)
       && control.value.charAt(0).toUpperCase() === control.value.charAt(0)) {

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../services/user.service";
 import {User} from "../../interfaces/user";
@@ -14,6 +14,8 @@ export class UserFormComponent implements OnInit {
 
   @Output()
   submitUser: EventEmitter<User>;
+  @Input()
+  inputUser: User;
 
   constructor(private userService: UserService) {
     this.form = new FormGroup({
@@ -26,6 +28,12 @@ export class UserFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.inputUser) {
+      this.form.get('name').setValue(this.inputUser.name);
+      this.form.get('email').setValue(this.inputUser.email);
+      this.form.get('age').setValue(this.inputUser.age);
+      this.form.get('gender').setValue(this.inputUser.gender);
+    }
   }
 
   submitForm() {

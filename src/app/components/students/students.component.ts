@@ -34,16 +34,22 @@ export class StudentsComponent implements OnInit {
     });
   }
 
-  openDeleteModal(user: User): void {
+  openDeleteModal(u: User): void {
     const modalRef = this.modalService.open(DeleteModalComponent);
-    modalRef.componentInstance.user = user;
+    modalRef.componentInstance.user = u;
     modalRef.result.then(() => {
-      this.deleteUser(user);
+      this.deleteUser(u);
     }).catch(() => {});
   }
 
   openModifyModal(user: User): void {
     const modalRef = this.modalService.open(ModifyModalComponent);
     modalRef.componentInstance.user = user;
+    modalRef.result.then(u => {
+      u.id = user.id;
+      this.userService.putUser(u).subscribe(users => {
+        this.users = users;
+      });
+    }).catch(() => {});
   }
 }
